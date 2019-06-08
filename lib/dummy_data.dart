@@ -2,6 +2,7 @@
 import 'models/horizontal_list_item.dart';
 import 'models/vertical_list_item.dart';
 import 'models/video_item.dart';
+import 'models/bookmark_item.dart';
 
 final List<HorizontalListItem> hList= [
     HorizontalListItem(
@@ -79,6 +80,17 @@ final List<VerticalListItem> vList = [
     content: 'Google has finally given us some more details around its new game streaming service. Unveiled back in March this year, Stadia is a game streaming service that Google claims will give users a true gaming experience with games running at 60FPS with HDR, in 4K — however, a fast internet connection will obviously be a requirement for that. Google has finally given us some more details around its new game streaming service. Unveiled back in March this year, Stadia is a game streaming service that Google claims will give users a true gaming experience with games running at 60FPS with HDR, in 4K — however, a fast internet connection will obviously be a requirement for that.'
   ),
 ].toList();
+
+final List<BookmarkItem> bookmarks = [
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png'),
+  BookmarkItem(date: '3 Dec, 2019', name: 'Google Chrome will help you save mobile data', likes: 0, image: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/20170817_Google_Chrome_logo_vector_download.png')
+];
 
 final List<VideoItem> videoList = [
   VideoItem(comments: 31, likes: 542, name: 'OnePlus 7 Pro: Top 3 Features', date: '14 May, 2019', image: 'https://resizer.iproup.com/unsafe/640x/https://assets.iproup.com/assets/jpg/2019/02/2332_landscape.jpg?3.3.0'),

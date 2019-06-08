@@ -1,4 +1,5 @@
 import 'package:beebom_clone/pages/articles_page.dart';
+import 'package:beebom_clone/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -30,9 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Container(
           child: Text('Page 2'),
         ),
-        Container(
-          child: Text('Page 3'),
-        ),
+        ProfilePage()
       ],
     );
   }
