@@ -1,17 +1,17 @@
+import 'package:beebom_clone/models/video_item.dart';
 import 'package:flutter/material.dart';
-import '../models/video_item.dart';
 
-class VideoItemWidget extends StatelessWidget {
+class VideoGridItem extends StatelessWidget {
 
   final VideoItem item;
 
-  VideoItemWidget({@required this.item});
+  VideoGridItem({@required this.item});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5.0),
-      width: (MediaQuery.of(context).size.width / 2) - 15,
+      margin: EdgeInsets.all(5.0),
+      height: 300,
       child: Column(
         children: <Widget>[
           ClipRRect(
@@ -44,19 +44,24 @@ class VideoItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     InkWell(
-                      child: Icon(Icons.bookmark_border, color: Colors.grey, size: 20.0),
+                      child: Icon(Icons.bookmark_border,
+                          color: Colors.grey, size: 20.0),
                       splashColor: Colors.grey,
                       onTap: () {},
                     ),
                     Row(
                       children: <Widget>[
-                        Icon(Icons.favorite_border, color: Colors.grey, size: 20.0),
+                        Icon(Icons.favorite_border,
+                            color: Colors.grey, size: 20.0),
                         SizedBox(width: 5.0),
-                        Text(item.likes.toString(), style: TextStyle(color: Colors.grey)),
+                        Text(item.likes.toString(),
+                            style: TextStyle(color: Colors.grey)),
                         SizedBox(width: 10.0),
-                        Icon(Icons.chat_bubble_outline, color: Colors.grey, size: 20.0),
+                        Icon(Icons.chat_bubble_outline,
+                            color: Colors.grey, size: 20.0),
                         SizedBox(width: 5.0),
-                        Text(item.comments.toString(), style: TextStyle(color: Colors.grey)),
+                        Text(item.comments.toString(),
+                            style: TextStyle(color: Colors.grey)),
                       ],
                     ),
                   ],
