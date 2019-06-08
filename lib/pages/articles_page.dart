@@ -8,6 +8,8 @@ import 'package:beebom_clone/widgets/video_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'article_single_page.dart';
+
 class ArticlesPage extends StatefulWidget {
   @override
   _ArticlesPageState createState() => _ArticlesPageState();
@@ -19,7 +21,16 @@ class _ArticlesPageState extends State<ArticlesPage> {
   List<VideoItem> videoItems = videoList;
 
   Widget _buildVerticalList(int index) {
-    return VerticalCard(cardItem: verticalList[index]);
+    return GestureDetector(
+      child: VerticalCard(cardItem: verticalList[index]),
+      onTap: () {
+        Navigator.push(
+            context,
+            new MaterialPageRoute(
+                builder: (context) =>
+                    ArticleSinglePage(article: verticalList[index])));
+      },
+    );
   }
 
   Widget _buildHorizontalListItem() {
@@ -68,7 +79,10 @@ class _ArticlesPageState extends State<ArticlesPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[VideoItemWidget(item: videoItems[0]), VideoItemWidget(item: videoItems[1])],
+            children: <Widget>[
+              VideoItemWidget(item: videoItems[0]),
+              VideoItemWidget(item: videoItems[1])
+            ],
           )
         ],
       ),
@@ -94,7 +108,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
           // Build Card item with list index varied becuase 2 additional items(List on top and video items) were added to list view
           return _buildVerticalList(index - 2);
         } else {
-          // Build Card item with list index varied becuase 1 additional item(List on top) was added to list view          
+          // Build Card item with list index varied becuase 1 additional item(List on top) was added to list view
           return _buildVerticalList(index - 1);
         }
       },

@@ -2,7 +2,6 @@ import 'package:beebom_clone/models/vertical_list_item.dart';
 import 'package:flutter/material.dart';
 
 class VerticalCard extends StatelessWidget {
-
   final VerticalListItem cardItem;
 
   VerticalCard({@required this.cardItem});
@@ -15,13 +14,16 @@ class VerticalCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       child: Column(
         children: <Widget>[
-          FadeInImage(
-            image: NetworkImage(cardItem.image),
-            height: 150.0,
-            width: MediaQuery.of(context).size.width - 20,
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-            placeholder: AssetImage('assets/placeholder.gif'),
+          Hero(
+            tag: cardItem.id,
+            child: FadeInImage(
+              image: NetworkImage(cardItem.image),
+              height: 150.0,
+              width: MediaQuery.of(context).size.width - 20,
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+              placeholder: AssetImage('assets/placeholder.gif'),
+            ),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
@@ -41,7 +43,10 @@ class VerticalCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(cardItem.time, style: TextStyle(color: Colors.grey),),
+                Text(
+                  cardItem.time,
+                  style: TextStyle(color: Colors.grey),
+                ),
                 Row(
                   children: <Widget>[
                     ButtonTheme(
@@ -53,7 +58,10 @@ class VerticalCard extends StatelessWidget {
                           children: <Widget>[
                             Icon(Icons.favorite_border, color: Colors.grey),
                             SizedBox(width: 5.0),
-                            Text(cardItem.likes.toString(), style: TextStyle(color: Colors.grey),)
+                            Text(
+                              cardItem.likes.toString(),
+                              style: TextStyle(color: Colors.grey),
+                            )
                           ],
                         ),
                         onPressed: () {},
