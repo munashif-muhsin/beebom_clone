@@ -1,7 +1,6 @@
 import 'package:beebom_clone/dummy_data.dart';
 import 'package:beebom_clone/models/horizontal_list_item.dart';
 import 'package:beebom_clone/models/vertical_list_item.dart';
-import 'package:beebom_clone/models/vertical_list_item.dart';
 import 'package:beebom_clone/models/video_item.dart';
 import 'package:beebom_clone/widgets/horizontal_list_card.dart';
 import 'package:beebom_clone/widgets/vertical_card.dart';
@@ -86,12 +85,16 @@ class _ArticlesPageState extends State<ArticlesPage> {
           : verticalList.length + 1,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
+          // Build horizontally scrolling list on top
           return _buildHorizontalListItem();
         } else if (index == 4) {
+          // Buld Video cards in between list if main list items count > 3
           return _buildVideoCard();
         } else if (index > 4) {
+          // Build Card item with list index varied becuase 2 additional items(List on top and video items) were added to list view
           return _buildVerticalList(index - 2);
         } else {
+          // Build Card item with list index varied becuase 1 additional item(List on top) was added to list view          
           return _buildVerticalList(index - 1);
         }
       },
