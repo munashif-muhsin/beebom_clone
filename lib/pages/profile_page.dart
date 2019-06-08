@@ -1,5 +1,6 @@
 import 'package:beebom_clone/dummy_data.dart';
 import 'package:beebom_clone/models/bookmark_item.dart';
+import 'package:beebom_clone/widgets/bookmark_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -12,64 +13,7 @@ class _ProfilePageState extends State<ProfilePage> {
   List<BookmarkItem> myBookmarks = bookmarks;
 
   Widget _buildBookmarkItem(int index) {
-    return Card(
-      color: Theme.of(context).primaryColor,
-      child: Container(
-        height: 120,
-        padding: EdgeInsets.all(10.0),
-        child: Row(
-          children: <Widget>[
-            FadeInImage(
-              image: NetworkImage(myBookmarks[index].image),
-              width: 100,
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
-              placeholder: AssetImage('assets/placeholder.gif'),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
-              width: MediaQuery.of(context).size.width - 150,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    myBookmarks[index].name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    maxLines: 2,
-                  ),
-                  Expanded(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          myBookmarks[index].date,
-                          style: TextStyle(color: Colors.grey, fontSize: 14.0),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            Icon(
-                              Icons.favorite_border,
-                              color: Colors.grey,
-                              size: 18.0,
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              myBookmarks[index].likes.toString(),
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return BookmarkItemCard(bookmarkedItem: myBookmarks[index]);
   }
 
   Widget _buildTopHeader() {
