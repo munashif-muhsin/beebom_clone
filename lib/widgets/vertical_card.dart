@@ -40,7 +40,7 @@ class VerticalCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(cardItem.time),
+                Text(cardItem.time, style: TextStyle(color: Colors.grey),),
                 Row(
                   children: <Widget>[
                     ButtonTheme(
@@ -50,9 +50,9 @@ class VerticalCard extends StatelessWidget {
                       child: FlatButton(
                         child: Row(
                           children: <Widget>[
-                            Icon(Icons.favorite_border),
+                            Icon(Icons.favorite_border, color: Colors.grey),
                             SizedBox(width: 5.0),
-                            Text(cardItem.likes.toString())
+                            Text(cardItem.likes.toString(), style: TextStyle(color: Colors.grey),)
                           ],
                         ),
                         onPressed: () {},
@@ -60,7 +60,7 @@ class VerticalCard extends StatelessWidget {
                     ),
                     Container(
                       child: IconButton(
-                        icon: Icon(Icons.bookmark_border),
+                        icon: Icon(Icons.bookmark_border, color: Colors.grey),
                         onPressed: () {},
                       ),
                     )
