@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class SettingsSheet extends StatelessWidget {
   Widget _buildShareCard() {
@@ -26,7 +27,10 @@ class SettingsSheet extends StatelessWidget {
           Container(
             alignment: Alignment.centerRight,
             child: FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                print('share pressed');
+                Share.share('Check this crazy app out.');
+              },
               child: Text('LET\'S SHARE'),
             ),
           ),
