@@ -1,3 +1,4 @@
+import 'package:beebom_clone/pages/login_with_email.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginButtons() {
+  Widget _buildLoginButtons(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 70),
       // color: Colors.red,
@@ -120,7 +121,9 @@ class LoginPage extends StatelessWidget {
               'email_icon.png',
               iconSize: {'width': 35, 'height': 20},
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => LoginWithEmailPage()));
+            },
           ),
         ],
       ),
@@ -138,7 +141,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             _buildLogoContainer(),
-            _buildLoginButtons(),
+            _buildLoginButtons(context),
           ],
         ),
       ),
