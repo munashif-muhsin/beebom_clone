@@ -1,6 +1,7 @@
 import 'package:beebom_clone/dummy_data.dart';
 import 'package:beebom_clone/models/bookmark_item.dart';
 import 'package:beebom_clone/widgets/bookmark_item_widget.dart';
+import 'package:beebom_clone/widgets/settings_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -41,21 +42,38 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           SizedBox(width: 5.0),
-          Text(
-            'Tap Here to Sign in',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          FlatButton(
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => LoginPage(),
+                    fullscreenDialog: true)),
+            child: Text(
+              'Tap Here to Sign in',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
           ),
           SizedBox(width: 10.0),
           IconButton(
             icon: Icon(Icons.settings),
             color: Colors.grey,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => LoginPage(), fullscreenDialog: true));
+              _openSettings();
             },
           ),
         ],
       ),
     );
+  }
+
+  _openSettings() {
+    return showModalBottomSheet(context: context, builder: (BuildContext context) {
+      return SettingsSheet();
+    });
   }
 
   @override
@@ -84,12 +102,14 @@ class _ProfilePageState extends State<ProfilePage> {
             ]),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate((
-              BuildContext context,
-              int index,
-            ) {
-              return _buildBookmarkItem(index);
-            }, childCount: myBookmarks.length),
+            delegate: SliverChildBuilderDelegate(
+              (
+                BuildContext context,
+                int index,
+              ) =>
+                  _buildBookmarkItem(index),
+              childCount: myBookmarks.length,
+            ),
           )
         ],
       ),
