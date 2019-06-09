@@ -4,6 +4,8 @@ import 'package:beebom_clone/widgets/bookmark_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
+import 'login.dart';
+
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -47,7 +49,9 @@ class _ProfilePageState extends State<ProfilePage> {
           IconButton(
             icon: Icon(Icons.settings),
             color: Colors.grey,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => LoginPage(), fullscreenDialog: true));
+            },
           ),
         ],
       ),
