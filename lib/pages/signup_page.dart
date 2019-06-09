@@ -1,13 +1,12 @@
-import 'package:beebom_clone/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class LoginWithEmailPage extends StatefulWidget {
+class SignupPage extends StatefulWidget {
   @override
-  _LoginWithEmailPageState createState() => _LoginWithEmailPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginWithEmailPageState extends State<LoginWithEmailPage> {
+class _SignupPageState extends State<SignupPage> {
   InputDecoration _buildInputDecoration(String placeholder) {
     return InputDecoration(
       labelText: placeholder,
@@ -25,17 +24,15 @@ class _LoginWithEmailPageState extends State<LoginWithEmailPage> {
       appBar: AppBar(),
       backgroundColor: Colors.white.withOpacity(0.9),
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
         child: Container(
-          color: Colors.red.withOpacity(0),
-          padding: EdgeInsets.all(10.0),
           child: ListView(
             children: <Widget>[
               SizedBox(height: 50.0),
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                  'Welcome Back',
+                  'Hello.',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 25.0,
@@ -52,28 +49,38 @@ class _LoginWithEmailPageState extends State<LoginWithEmailPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 child: TextField(
-                    cursorColor: Colors.black45,
-                    style: TextStyle(color: Colors.black),
-                    decoration: _buildInputDecoration('Username')),
+                  cursorColor: Colors.black45,
+                  style: TextStyle(color: Colors.black),
+                  decoration: _buildInputDecoration('Full Name'),
+                ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 child: TextField(
-                    cursorColor: Colors.black45,
-                    style: TextStyle(color: Colors.black),
-                    obscureText: true,
-                    decoration: _buildInputDecoration('Password')),
+                  keyboardType: TextInputType.emailAddress,
+                  cursorColor: Colors.black45,
+                  style: TextStyle(color: Colors.black),
+                  decoration: _buildInputDecoration('Email'),
+                ),
               ),
               Container(
-                alignment: Alignment.centerRight,
-                child: FlatButton(
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  onPressed: () {},
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                child: TextField(
+                  cursorColor: Colors.black45,
+                  style: TextStyle(color: Colors.black),
+                  obscureText: true,
+                  decoration: _buildInputDecoration('Password'),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                child: TextField(
+                  cursorColor: Colors.black45,
+                  style: TextStyle(color: Colors.black),
+                  obscureText: true,
+                  decoration: _buildInputDecoration('Confirm Password'),
                 ),
               ),
               Container(
@@ -83,22 +90,8 @@ class _LoginWithEmailPageState extends State<LoginWithEmailPage> {
                 ),
                 margin: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
                 child: FlatButton(
-                  child: Text('Login'),
+                  child: Text('Signup'),
                   onPressed: () {},
-                ),
-              ),
-              Container(
-                child: FlatButton(
-                  child: Text(
-                    'Don\'t have an Account? Sign Up.',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => SignupPage()));
-                  },
                 ),
               ),
             ],
