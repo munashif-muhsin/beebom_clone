@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoPage extends StatefulWidget {
   @override
@@ -18,10 +19,14 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
 
   StreamController<double> controller = StreamController.broadcast();
 
+  VideoPlayerController videoController;
+
   @override
   void initState() {
     super.initState();
     modalHeight = minModalHeight;
+    videoController = VideoPlayerController.asset('assets/Footboys.mp4')
+      ..initialize();
   }
 
   void _onDragEnd(DragEndDetails endDetails) {
@@ -157,7 +162,7 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
                   padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
                   duration: Duration(milliseconds: 200),
                   height: snapshot.hasData ? snapshot.data : minModalHeight,
-                  color: Colors.white.withOpacity(0.0),
+                  color: Colors.black.withOpacity(0),
                   child: _buildBottomSheetChild(snapshot),
                 );
               }),
@@ -168,12 +173,44 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    videoController.play();
+    videoController.setLooping(true);
     maxModalHeight = MediaQuery.of(context).size.height * 0.8;
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(),
-      body: Container(),
-      bottomSheet: _buildBasicBottomSheetSetup(),
+    return Theme(
+      data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(),
+        body: Container(
+          alignment: Alignment.center,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            children: <Widget>[
+              ConstrainedBox(
+                constraints: BoxConstraints.loose(
+                  Size.fromWidth(MediaQuery.of(context).size.width),
+                ),
+                child: Transform.scale(
+                  child: AspectRatio(
+                    aspectRatio: 9 / 16,
+                    child: VideoPlayer(videoController),
+                  ),
+                  scale: 1.3,
+                ),
+              ),
+            ],
+          ),
+        ),
+        bottomSheet: _buildBasicBottomSheetSetup(),
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    videoController.dispose();
+    controller.close();
+    super.dispose();
   }
 }
