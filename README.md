@@ -22,7 +22,12 @@ This app is a UI clone of the Android App Beebom built using Flutter 1.2
 
 ## Screenshots
 
-![](https://gph.is/g/aXpekYx)
+![](https://media.giphy.com/media/FqfTLFJxYhXOf8jgrK/giphy.gif)
+![](https://media.giphy.com/media/mnqerS4LVvBAPxl40R/giphy.gif)
+![](https://media.giphy.com/media/7n77rrRU4R7NBttGKt/giphy.gif)
+![](https://media.giphy.com/media/H3Z7NcYCNSVQSN0zGY/giphy.gif)
+![](https://media.giphy.com/media/h4CBKfiF6ReJwdvJFX/giphy.gif)
+
 
 
 ## Getting Started
