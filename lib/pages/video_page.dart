@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,6 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   double dragPosition = 0;
   double dragStartPosition;
   bool isModalOpen = false;
-  bool shouldShowDate = false;
 
   StreamController<double> controller = StreamController.broadcast();
 

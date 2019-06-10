@@ -57,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
-          SizedBox(width: 10.0),
+          SizedBox(width: 5.0),
           IconButton(
             icon: Icon(Icons.settings),
             color: Colors.grey,
