@@ -25,7 +25,7 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     modalHeight = minModalHeight;
-    videoController = VideoPlayerController.asset('assets/Footboys.mp4')
+    videoController = VideoPlayerController.asset('assets/sam_smith.mp4')
       ..initialize();
   }
 
@@ -182,7 +182,10 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
       data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
       child: Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.black.withOpacity(0.0),
+          elevation: 0,
+        ),
         body: Container(
           alignment: Alignment.center,
           height: MediaQuery.of(context).size.height,
