@@ -8,9 +8,18 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  _buildTabBar() {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  Widget _buildTabBar() {
     return TabBar(
+      controller: _tabController,
       tabs: <Widget>[
         Tab(
           child: Icon(Icons.description, size: 30.0),
@@ -25,29 +34,27 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _buildTabBarViews() {
+  Widget _buildTabBarViews() {
     return TabBarView(
-      children: <Widget>[
-        ArticlesPage(),
-        VideosPage(),
-        ProfilePage()
-      ],
+      controller: _tabController,
+      children: <Widget>[ArticlesPage(_openVideosTab), VideosPage(), ProfilePage()],
     );
+  }
+
+  void _openVideosTab() {
+    _tabController.animateTo(1);
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      child: Scaffold(
-        backgroundColor: Color(0xFF0E0E0E),
-        appBar: AppBar(
-          flexibleSpace: SafeArea(
-            child: _buildTabBar(),
-          ),
+    return Scaffold(
+      backgroundColor: Color(0xFF0E0E0E),
+      appBar: AppBar(
+        flexibleSpace: SafeArea(
+          child: _buildTabBar(),
         ),
-        body: _buildTabBarViews(),
       ),
-      length: 3,
+      body: _buildTabBarViews(),
     );
   }
 }

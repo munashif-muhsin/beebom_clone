@@ -11,6 +11,9 @@ import 'package:flutter/widgets.dart';
 import 'article_single_page.dart';
 
 class ArticlesPage extends StatefulWidget {
+  Function openVideosTab;
+  ArticlesPage(this.openVideosTab);
+
   @override
   _ArticlesPageState createState() => _ArticlesPageState();
 }
@@ -70,10 +73,12 @@ class _ArticlesPageState extends State<ArticlesPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),
                 child: Text(
-                  'Play All',
+                  'See All',
                   style: TextStyle(fontSize: 16.0),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  widget.openVideosTab();
+                },
               )
             ],
           ),

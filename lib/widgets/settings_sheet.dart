@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsSheet extends StatelessWidget {
-  Widget _buildShareCard() {
+  Widget _buildShareCard(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10.0),
       padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
@@ -28,8 +29,8 @@ class SettingsSheet extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: FlatButton(
               onPressed: () {
-                print('share pressed');
                 Share.share('Check this crazy app out.');
+                Navigator.pop(context);
               },
               child: Text('LET\'S SHARE'),
             ),
@@ -39,11 +40,14 @@ class SettingsSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildFooterLinks() {
+  Widget _buildFooterLinks(BuildContext context) {
     return Row(
       children: <Widget>[
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            _launchUrl('https://beebom.com/about-us/');
+            Navigator.pop(context);
+          },
           child: Text(
             'About Us',
             style: TextStyle(
@@ -54,7 +58,10 @@ class SettingsSheet extends StatelessWidget {
         ),
         SizedBox(width: 20.0),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            _launchUrl('https://github.com/munashif-muhsin');
+            Navigator.pop(context);
+          },
           child: Text(
             'Contact Us',
             style: TextStyle(
@@ -65,7 +72,10 @@ class SettingsSheet extends StatelessWidget {
         ),
         SizedBox(width: 20.0),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            _launchUrl('https://github.com/munashif-muhsin');
+            Navigator.pop(context);
+          },
           child: Text(
             'Rate Us',
             style: TextStyle(
@@ -78,6 +88,14 @@ class SettingsSheet extends StatelessWidget {
     );
   }
 
+  void _launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -85,7 +103,7 @@ class SettingsSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          _buildShareCard(),
+          _buildShareCard(context),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.0),
             margin: EdgeInsets.symmetric(vertical: 20.0),
@@ -97,7 +115,10 @@ class SettingsSheet extends StatelessWidget {
                   style: TextStyle(color: Colors.grey, fontSize: 16.0),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    _launchUrl('https://github.com/munashif-muhsin');
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     'Have a look at this support article',
                     style: TextStyle(
@@ -107,7 +128,7 @@ class SettingsSheet extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30.0),
-                _buildFooterLinks(),
+                _buildFooterLinks(context),
               ],
             ),
           )
