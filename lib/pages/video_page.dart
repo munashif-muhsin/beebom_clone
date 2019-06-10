@@ -16,6 +16,7 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   double dragPosition = 0;
   double dragStartPosition;
   bool isModalOpen = false;
+  bool shouldShowDate = false;
 
   StreamController<double> controller = StreamController.broadcast();
 
@@ -35,27 +36,12 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
     }
   }
 
-  Widget _buildDateWidget() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
-      child: Text(
-        '10 May, 2019',
-        style: TextStyle(color: Colors.grey, fontSize: 14.0),
-      ),
-      alignment: Alignment.centerLeft,
-    );
-  }
-
   Widget _buildArticleWidget() {
     return Expanded(
       child: SingleChildScrollView(
         child: Text(
           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-          style: TextStyle(
-            fontSize: 20.0,
-            height: 1.2,
-            letterSpacing: 0.1
-          ),
+          style: TextStyle(fontSize: 18.0, height: 1.2, letterSpacing: 0.1),
         ),
       ),
     );
@@ -125,13 +111,15 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
           padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 19.0),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(5)),
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(5),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.keyboard_arrow_up),
-              isModalOpen ? _buildDateWidget() : Container(),
+              isModalOpen
+                  ? Icon(Icons.keyboard_arrow_down)
+                  : Icon(Icons.keyboard_arrow_up),
               isModalOpen ? _buildArticleWidget() : Container(),
             ],
           ),
