@@ -1,16 +1,25 @@
-# beebom_clone
+# Beebom - UI Clone
 
-A new Flutter project.
+This app is a UI clone of the Android App Beebom built using Flutter 1.2
+
+
+## Features
+
+- Nested Listview with both Horizontal and Vertical lists
+- Added other components in between list view items 
+- Grid view
+- Sliver App Bar with image
+- Display Page as Modal
+- Bottom Modal
+- Persistant Bottom Modal
+- Drag bottom Modal up to show more info (Like Music Player UI)
+- Show video in full screen without affecting the aspect ratio
+- Pause and play video on tap
+- Pause and play video when the modal is opened and closed respectively
+- Open Sharesheet to share text
+- Open links outside the app
+- Custom Scroll View
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+For help getting started with Flutter, view the online documentation at https:flutter.dev, which offers tutorials, samples, guidance on mobile development, and a full API reference.
