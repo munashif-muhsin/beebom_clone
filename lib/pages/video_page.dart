@@ -32,10 +32,12 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   void _onDragEnd(DragEndDetails endDetails) {
     if (dragStartPosition < dragPosition) {
       controller.add(maxModalHeight);
+      videoController.pause();
       isModalOpen = true;
     } else {
       isModalOpen = false;
       controller.add(minModalHeight);
+      videoController.play();
     }
   }
 
@@ -132,6 +134,7 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   }
 
   Widget _buildBasicBottomSheetSetup() {
+    maxModalHeight = MediaQuery.of(context).size.height * 0.8;
     return BottomSheet(
       onClosing: () {},
       enableDrag: true,
@@ -175,7 +178,6 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     videoController.play();
     videoController.setLooping(true);
-    maxModalHeight = MediaQuery.of(context).size.height * 0.8;
     return Theme(
       data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
       child: Scaffold(
@@ -197,6 +199,17 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
                     child: VideoPlayer(videoController),
                   ),
                   scale: 1.3,
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width - 50,
+                height: MediaQuery.of(context).size.height,
+                child: GestureDetector(
+                  onTap: () {
+                    videoController.value.isPlaying
+                        ? videoController.pause()
+                        : videoController.play();
+                  },
                 ),
               ),
             ],
