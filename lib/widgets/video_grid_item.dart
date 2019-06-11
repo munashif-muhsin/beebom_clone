@@ -11,7 +11,7 @@ class VideoGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (BuildContext context) => VideoPage())),
+          context, MaterialPageRoute(builder: (BuildContext context) => VideoPage(item))),
       child: Container(
         margin: EdgeInsets.all(5.0),
         height: 300,
@@ -38,9 +38,12 @@ class VideoGridItem extends StatelessWidget {
                     style: TextStyle(fontSize: 11.0, color: Colors.grey),
                   ),
                   SizedBox(height: 2.0),
-                  Text(
-                    item.name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Container(
+                    height: 35.0,
+                    child: Text(
+                      item.name,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                   SizedBox(height: 5.0),
                   Row(

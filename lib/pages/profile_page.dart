@@ -1,5 +1,5 @@
 import 'package:beebom_clone/dummy_data.dart';
-import 'package:beebom_clone/models/bookmark_item.dart';
+import 'package:beebom_clone/models/vertical_list_item.dart';
 import 'package:beebom_clone/widgets/bookmark_item_widget.dart';
 import 'package:beebom_clone/widgets/settings_sheet.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  List<BookmarkItem> myBookmarks = bookmarks;
+  List<VerticalListItem> myBookmarks = vList;
 
   Widget _buildBookmarkItem(int index) {
     return BookmarkItemCard(bookmarkedItem: myBookmarks[index]);

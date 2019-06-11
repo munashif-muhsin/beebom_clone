@@ -1,9 +1,14 @@
 import 'dart:async';
+import 'package:beebom_clone/models/video_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPage extends StatefulWidget {
+
+  final VideoItem videoData;
+  VideoPage(this.videoData);
+
   @override
   _VideoPageState createState() => _VideoPageState();
 }
@@ -58,13 +63,13 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Gorilla Glass\'s next gen glasses ',
+          '${widget.videoData.name}',
           style: TextStyle(
             color: Colors.white,
             fontSize: 19.0,
             fontWeight: FontWeight.bold,
           ),
-          maxLines: 2,
+          maxLines: 1,
         ),
         SizedBox(height: 15.0),
         Row(
